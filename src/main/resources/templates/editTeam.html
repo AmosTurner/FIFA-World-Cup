@@ -1,0 +1,68 @@
+<!--
+This HTML file defines the structure and layout of the editTeam page
+which includes hyperlinks that allow a user to edit a row
+Name: Amos Turner
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Team</title>
+    <!-- Bootstrap 5 flag-->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+</head>
+<body>
+<header>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/addTeam">Add Team</a></li>
+        <li><a href="/deleteTeam">Delete Team</a></li>
+        <li><a href="/editTeam">Edit Team</a></li>
+        <li><a href="/displayResults">Display Results</a></li>
+    </ul>
+</header>
+<br>
+<section>
+    <h2>Edit Team</h2>
+    <table style="width:50%" th:if="${teams != null && teams !=''}">
+        <tr>
+            <th colspan="2">Team (Country)</th>
+            <th>Continent</th>
+            <th>Number of Played Games</th>
+            <th>Number of Won Games</th>
+            <th>Number of Drawn Games</th>
+            <th>Number of Lost Games</th>
+            <th></th>
+        </tr>
+        <tr th:each="t:${teams}">
+            <td><i th:class="${t.displayImage()}"></i></td>
+            <td th:text="${t.teamName}"></td>
+            <td th:text="${t.continent}"></td>
+            <td th:text="${t.played}"></td>
+            <td th:text="${t.won}"></td>
+            <td th:text="${t.drawn}"></td>
+            <td th:text="${t.lost}"></td>
+            <td><a class="link" th:href="@{'editTeam/' + ${t.teamID}}">Edit</a></td>
+        </tr>
+    </table>
+    <br>
+    <div>
+        <form method="post" th:action="@{/searchEdit}" th:object="${myTeam}">
+            <p>Search team:</p>
+            <input type="text" placeholder="Team Name..." th:field="*{teamName}"><br>
+            <input type="text" placeholder="Continent Name..." th:field="*{continent}"><br>
+            <input type="submit" value="Search Team!">
+        </form>
+    </div>
+</section>
+<br>
+<footer>
+    <h4>&copy; 2021 by Amos Turner All rights reserved.</h4>
+</footer>
+</body>
+</html>

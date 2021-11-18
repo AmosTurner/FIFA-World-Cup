@@ -1,0 +1,56 @@
+<!--
+This HTML file defines the structure and layout of the addTeam page
+which includes a form where a user can add a team to the database
+Name: Amos Turner
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Team</title>
+    <!-- Bootstrap 5 flag-->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+</head>
+<body>
+<header>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/addTeam">Add Team</a></li>
+        <li><a href="/deleteTeam">Delete Team</a></li>
+        <li><a href="/editTeam">Edit Team</a></li>
+        <li><a href="/displayResults">Display Results</a></li>
+    </ul>
+</header>
+<br>
+<section>
+    <h2>Add Team</h2>
+    <form method="post" action="#" th:action="@{/addTeam}" th:object="${myTeam}">
+
+        <input type="hidden" th:field="*{teamID}">
+        <label>Team Name:</label><br>
+        <input type="text" placeholder="Team Name..." th:field="*{teamName}"><br>
+        <select th:field="*{continent}">
+            <option th:each="c:*{continents}" th:value="${c}" th:text="${c}"></option>
+        </select><br>
+        <label>Number of Played Games</label><br>
+        <input type="number" min="0" th:field="*{played}"><br>
+        <label>Number of Won Games</label><br>
+        <input type="number" min="0" th:field="*{won}"><br>
+        <label>Number of Drawn Games</label><br>
+        <input type="number" min="0" th:field="*{drawn}"><br>
+        <label>Number of Lost Games</label><br>
+        <input type="number" min="0" th:field="*{lost}"><br>
+        <input type="submit" value="Add">
+    </form>
+</section>
+<br>
+<footer>
+    <h4>&copy; 2021 by Amos Turner All rights reserved.</h4>
+</footer>
+</body>
+</html>

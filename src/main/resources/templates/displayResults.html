@@ -1,0 +1,72 @@
+<!--
+This HTML file defines the structure and layout of the displayResults page
+which displays all the teams in the H2 database in a tabular format
+which can be sorted by name, continent, or points
+Name: Amos Turner
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Results</title>
+    <!-- Bootstrap 5 flag-->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+</head>
+<body>
+<header>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/addTeam">Add Team</a></li>
+        <li><a href="/deleteTeam">Delete Team</a></li>
+        <li><a href="/editTeam">Edit Team</a></li>
+        <li><a href="/displayResults">Display Results</a></li>
+    </ul>
+</header>
+<br>
+<section>
+    <h2>Display Results</h2>
+    <table style="width:50%" th:if="${teams != null && teams !=''}">
+        <tr>
+            <th colspan="2">Team (Country)</th>
+            <th>Continent</th>
+            <th>Number of Played Games</th>
+            <th>Number of Won Games</th>
+            <th>Number of Drawn Games</th>
+            <th>Number of Lost Games</th>
+            <th>Pts</th>
+        </tr>
+        <tr th:each="t:${teams}">
+            <td><i th:class="${t.displayImage()}"></i></td>
+            <td th:text="${t.teamName}"></td>
+            <td th:text="${t.continent}"></td>
+            <td th:text="${t.played}"></td>
+            <td th:text="${t.won}"></td>
+            <td th:text="${t.drawn}"></td>
+            <td th:text="${t.lost}"></td>
+            <td th:text="${t.calculatePoints()}"></td>
+        </tr>
+    </table>
+    <br>
+
+    <form method="post" action="#" th:action="@{/sort}" th:object="${myTeam}">
+        <p>Choose how you want to sort the teams:</p>
+        <input type="radio" name="order" value="teamName" th:field="*{sort}"/>
+        <label>by name</label><br>
+        <input type="radio" name="order" value="continent" th:field="*{sort}"/>
+        <label>by continent</label><br>
+        <input type="radio" name="order" value="points" th:field="*{sort}"/>
+        <label>by points</label><br>
+        <input type="submit" value="Sort Teams"/><br>
+    </form>
+</section>
+<br>
+<footer>
+    <h4>&copy; 2021 by Amos Turner All rights reserved.</h4>
+</footer>
+</body>
+</html>

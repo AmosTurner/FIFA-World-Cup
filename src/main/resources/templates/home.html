@@ -1,0 +1,52 @@
+<!--
+This HTML file defines the structure and layout of the home page
+which includes a header, footer, and title
+Name: Amos Turner
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <!-- Bootstrap 5 flag-->
+    <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.6.0/mdb.min.css"
+            rel="stylesheet"
+    />
+    <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css"/>
+</head>
+<body>
+<header>
+    <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/addTeam">Add Team</a></li>
+        <li><a href="/deleteTeam">Delete Team</a></li>
+        <li><a href="/editTeam">Edit Team</a></li>
+        <li><a href="/displayResults">Display Results</a></li>
+    </ul>
+</header>
+<br>
+
+<h2 id="title">
+    2018 FIFA World Cup Russia
+    <i class="flag flag-russia"></i>
+</h2>
+<br>
+<section class="flex-container">
+    <div>
+        <h4>June 14 - July 14</h4>
+        <h4>Location: Russia</h4>
+        <h4>Winner: France</h4>
+    </div>
+    <div>
+        <p style="width: 200px">Welcome to the FIFA World Cup webpage! Explore teams by adding, deleting, editing, or
+        viewing them in accompanying pages.</p>
+    </div>
+</section>
+<footer>
+    <h4 id="home-footer">&copy; 2021 by Amos Turner All rights reserved.</h4>
+</footer>
+
+</body>
+</html>
