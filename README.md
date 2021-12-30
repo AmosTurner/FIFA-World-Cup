@@ -1,5 +1,5 @@
 # FIFA-World-Cup
-This web application tracks and records the results of the FIFA World Cup 2018 held in Russia. 
+This web application tracks and records the results of the 2018 FIFA World Cup held in Russia. 
 
 # Dependencies
 - H2 Database
